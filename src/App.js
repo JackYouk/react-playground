@@ -1,24 +1,54 @@
-import logo from './logo.svg';
 import './App.css';
+import HelloWorld from './HelloWorld';
+import Counter from './Counter';
+import TodoApp from './TodoApp';
+import { useState } from 'react';
 
 function App() {
+  const [isShow, setIsShow] = useState(false);
+  const [showTodoApp, setShowTodoApp] = useState(true);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {
+        isShow ?
+        <h1 className='red'>Hello World</h1>
+        :
+        null
+      }
+      <button
+        onClick={() => {
+          setIsShow(!isShow);
+        }}
+      >
+        Show meh or dont idc
+      </button>
+      
+      <h1
+        style={{
+          color: 'green'
+        }}
+      >
+        Hello World
+      </h1>
+
+      <HelloWorld name='zaza'/>
+
+
+      <Counter />
+      
+      <button
+        onClick={() => setShowTodoApp(!showTodoApp)}
+      >
+        Show/Hide Todo app
+      </button>
+      {
+        showTodoApp ?
+          <TodoApp />
+        :
+        null
+      }
+      
+    </>
   );
 }
 
